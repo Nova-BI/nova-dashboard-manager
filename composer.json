@@ -13,16 +13,15 @@
     "prefer-stable": true,
     "require": {
         "php": ">=7.4.0",
-        "ampeco/nova-date-range-filter": "^0.1.1",
         "comodolab/nova-help": "^0.3",
-        "digital-creative/nova-dashboard": "*",
+        "digital-creative/nova-dashboard": "dev-master",
         "digital-creative/nova-inline-morph-to": "^0.2",
         "digital-creative/nova-data-table": "^0.1.1",
-        "digital-creative/nova-pill-filter": "^0.1.3",
-        "digital-creative/nova-range-input-filter": "^0.1.5",
-        "digital-creative/value-widget": "^0.0.1",
+        "digital-creative/nova-pill-filter":"dev-master",
+        "digital-creative/nova-range-input-filter": "dev-master",
+        "digital-creative/value-widget": "dev-master",
         "digitalazgroup/nova-plain-text-field": "^0.0.4",
-        "digital-creative/chartjs-widget": "^0.0.1",
+        "digital-creative/chartjs-widget": "dev-master",
         "dillingham/nova-attach-many": "^1.0",
         "dillingham/nova-detail-link": "^1.0",
         "eminiarts/nova-relationship-selector": "^1.0",
@@ -34,8 +33,7 @@
         "optimistdigital/nova-sortable": "^1.0",
         "pdmfc/nova-info-card": "^1.0",
         "rcknr/nova-multiselect-filter": "^1.3",
-        "spatie/laravel-schemaless-attributes": "^1.5",
-        "saumini/count": "^1.0"
+        "spatie/laravel-schemaless-attributes": "^1.5"
     },
     "extra": {
         "laravel": {

@@ -55,6 +55,48 @@ class Dashboard extends Model implements Sortable
     }
 
 
+    public function getDashboardEditableAttribute()
+    {
+        return $this->extra_attributes->dashboard_editable;
+    }
+
+    public function setDashboardEditableAttribute($value)
+    {
+        $this->extra_attributes->dashboard_editable = $value;
+    }
+
+
+    public function getExpandFilterByDefaultAttribute()
+    {
+        return $this->extra_attributes->expand_filter_by_default;
+    }
+
+    public function setExpandFilterByDefaultAttribute($value)
+    {
+        $this->extra_attributes->expand_filter_by_default = $value;
+    }
+
+
+    public function getGridCompactAttribute()
+    {
+        return $this->extra_attributes->grid_compact;
+    }
+
+    public function setGridCompactAttribute($value)
+    {
+        $this->extra_attributes->grid_compact = $value;
+    }
+
+    public function getGridNumberOfColumnsAttribute()
+    {
+        return $this->extra_attributes->grid_number_of_columns;
+    }
+
+    public function setGridNumberOfColumnsAttribute($value)
+    {
+        $this->extra_attributes->grid_number_of_columns = $value;
+    }
+
     public function dashboardable()
     {
         return $this->morphTo();
@@ -75,15 +117,6 @@ class Dashboard extends Model implements Sortable
         )->orderBy(config('nova-dashboard-manager.tables.filters').'.sort_order', 'asc');
     }
 
-
-    // not used?
-
-    public function setDashboard(string $dashboardKey): self
-    {
-        dd('\NovaBi\NovaDashboardManager\Models\Dashboard::setDashboard - not used?');
-        $this->dashboardKey = $dashboardKey;
-        return $this;
-    }
 
     public function filters(): array
     {

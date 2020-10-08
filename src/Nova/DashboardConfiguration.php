@@ -3,6 +3,7 @@
 namespace NovaBi\NovaDashboardManager\Nova;
 
 use App\Nova\Situation;
+use Laravel\Nova\Fields\Boolean;
 use NovaBi\NovaDashboardManager\Nova\Dashboardables\BaseFilter;
 
 use Laravel\Nova\Resource;
@@ -121,9 +122,15 @@ class DashboardConfiguration extends Resource
                         ->help(
                             'Internal Description'
                         ),
+                    Boolean::make(__('Edit-Mode'), 'DashboardEditable')->default('true')->help('Enable to edit dashboard'),
                 ],
                 $fields,
                 [
+                    Boolean::make(__('Expand Filter by Default'), 'ExpandFilterByDefault')->hideFromIndex(),
+                    Boolean::make(__('Grid: Compact'), 'GridCompact')->help(__('Automatically move items up if there is space available'))->hideFromIndex(),
+                    Number::make(__('Number of columns'), 'GridNumberOfColumns')->min(1)->max(12)->help(__('Number of Columns you can arrange widgets'))->hideFromIndex(),
+
+
                     PlainText::make(__('Databoard Type'), function () {
                         if (method_exists($this->dashboardable, 'label')) {
                             return $this->dashboardable->label();
@@ -178,10 +185,10 @@ class DashboardConfiguration extends Resource
     {
         $cards = [];
         if (\NovaBi\NovaDashboardManager\Models\Datawidget::count() == 0) {
-            $cards[] =(new Info())->info(__('Please <a href="databoardWidget" class="text-primary dim no-underline">configure your first Widget</a>'))->asHtml();
+            $cards[] =(new Info())->info(__('Please <a href="dashboard-widgets" class="text-primary dim no-underline">configure your first Widget</a>'))->asHtml();
         }
         if (\NovaBi\NovaDashboardManager\Models\Datafilter::count() == 0) {
-            $cards[] =(new Info())->info(__('Please <a href="databoardFilter" class="text-primary dim no-underline">configure your first Filter</a>'))->asHtml();
+            $cards[] =(new Info())->info(__('Please <a href="dashboard-filters" class="text-primary dim no-underline">configure your first Filter</a>'))->asHtml();
         }
         return $cards;
     }

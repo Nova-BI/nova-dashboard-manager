@@ -27,6 +27,10 @@ class CustomView extends View
     {
         return $this->databoard->name;
     }
+    public function title(): string
+    {
+        return $this->databoard->name;
+    }
 
     private function resolveActions(): Collection
     {
@@ -91,7 +95,7 @@ class CustomView extends View
     {
         // todo: how to get actions?
         return [
-            new UniqueAction(),
+//            new UniqueAction(),
         ];
     }
 
@@ -107,8 +111,6 @@ class CustomView extends View
                         'uriKey' => 'visual-'. $datawidget->id
                     ]
                 );
-//                ->width($datawidget->metricable->visualable->cardWidth)
-//                ->withMeta(['widget_id' => $datawidget->id, 'label' => $datawidget->name])
             ;
         });
         return $widgets;

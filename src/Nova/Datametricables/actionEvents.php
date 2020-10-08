@@ -32,7 +32,7 @@ class actionEvents extends BaseMetric
     public function metricFields(Request $request)
     {
         return [
-            Text::make(__('my Action Events Metric Option'), 'action_events_metric_option'),
+//            Text::make(__('my Action Events Metric Option'), 'action_events_metric_option'),
         ];
     }
 }

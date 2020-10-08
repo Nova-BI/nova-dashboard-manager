@@ -19,8 +19,12 @@ class Value extends ValueWidget
     {
         $result = $this->meta['metric']->calculate($options, $filters);
 
-        return ValueResult::make()
-            ->currentValue($result['currentValue'])
-            ->previousValue($result['previousValue']);
+        $output = ValueResult::make()->currentValue($result['currentValue']);
+
+        if ($this->meta['metric']->visualable->ShowPrevious) {
+            $output->previousValue($result['previousValue']);
+        }
+
+        return $output;
     }
 }

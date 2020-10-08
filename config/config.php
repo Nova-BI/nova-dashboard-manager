@@ -7,12 +7,12 @@ return [
     'showToolMenu' => true,
 
     'tables' => [
-        'widget_configurations' => 'dwidget_configurations',
-        'widgets' => 'dwidgets',
-        'metrics' => 'dmetrics',
-        'visuals' => 'dvisuals',
-        'filters' => 'dfilters',
-        'dashboards' => 'dboards',
+        'widget_configurations' => 'widget_configurations',
+        'widgets' => 'widgets',
+        'metrics' => 'metrics',
+        'visuals' => 'visuals',
+        'filters' => 'filters',
+        'dashboards' => 'boards',
     ],
 
     'models' => [

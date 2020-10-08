@@ -3,11 +3,8 @@
 namespace NovaBi\NovaDashboardManager;
 
 use DigitalCreative\NovaDashboard\Dashboard;
-use Illuminate\Support\Str;
 use NovaBi\NovaDashboardManager\Views\CustomView;
 use NovaBi\NovaDashboardManager\Models\Dashboard as DashboardModel;
-use Nemrutco\NovaGlobalFilter\NovaGlobalFilter;
-use NovaBi\NovaDashboardManager\Models\Datafilter;
 
 class CustomDashboard extends Dashboard
 {
@@ -22,7 +19,14 @@ class CustomDashboard extends Dashboard
         $this->model = $dashboards;
     }
 
-    public static string $title = 'Custom Dashboard';
+    public static string $title = 'Dashboard';
+
+    public function title(): string
+    {
+        return "Dashboard";
+        return $this->model->name;
+    }
+
 
     public static function humanize($value = null): string
     {
@@ -78,7 +82,9 @@ class CustomDashboard extends Dashboard
 
         // closure: ->editable(fn() => false);
         return [
-            CustomView::make($this->model)->editable()
+            CustomView::make($this->model)->editable(
+                $this->model->DashboardEditable
+            )
         ];
     }
 
@@ -88,10 +94,11 @@ class CustomDashboard extends Dashboard
     public function options(): array
     {
         return [
-            'expandFilterByDefault' => true,
+            'expandFilterByDefault' => $this->model->ExpandFilterByDefault,
             'grid' => [
 //                'breakpoint' => 'sm',
-                'compact' => true,
+                'compact' => $this->model->GridCompact,
+                'numberOfCols' => (int)$this->model->GridNumberOfColumns,
 //                'numberOfCols' => 3,
 //                'colWidth' => 300,
 //                'rowHeight' => 300

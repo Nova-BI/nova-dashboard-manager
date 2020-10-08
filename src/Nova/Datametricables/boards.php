@@ -32,7 +32,7 @@ class boards extends BaseMetric
     public function metricFields(Request $request)
     {
         return [
-            Text::make(__('my Board Metric Option'), 'boards_metric_option'),
+//            Text::make(__('my Board Metric Option'), 'boards_metric_option'), // example attribute
         ];
     }
 }

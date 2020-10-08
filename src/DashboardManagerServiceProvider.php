@@ -21,7 +21,6 @@ class DashboardManagerServiceProvider extends ServiceProvider
         $config = app()->make('config');
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'nova-dashboard-manager');
-
         // Load migrations
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 

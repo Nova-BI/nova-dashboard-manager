@@ -7,7 +7,6 @@ use DigitalCreative\NovaDashboard\Dashboard;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Laravel\Nova\Nova;
-use Laravel\Nova\Tool;
 use NovaBi\NovaDashboardManager\Models\Dashboard as DashboardModel;
 use NovaBi\NovaDashboardManager\Nova\DashboardConfiguration;
 use NovaBi\NovaDashboardManager\Nova\Datafilter;
@@ -29,6 +28,7 @@ class DashboardManager extends NovaDashboard
      * @var mixed
      */
     public $datafilterResource = Datafilter::class;
+
     /**
      * Build the view that renders the navigation links for the tool.
      *
@@ -36,15 +36,20 @@ class DashboardManager extends NovaDashboard
      */
     public function renderNavigation(): ?View
     {
-        return view('nova-dashboard-manager::navigation', [ 'dashboards' => $this->resolveDashboards() ]);
+        if (config('nova-dashboard-manager.showToolMenu') === true) {
+            return view('nova-dashboard-manager::navigation', ['dashboards' => $this->resolveDashboards()]);
+        }
+        return null;
     }
+
+
 
     protected function resolveDashboards(): Collection
     {
         return once(static function () {
             return DashboardModel::all()
-                             ->filter(fn(DashboardModel $dashboard) => $dashboard->authorizedToSee(request()))
-                             ->mapInto(CustomDashboard::class);
+                ->filter(fn(DashboardModel $dashboard) => $dashboard->authorizedToSee(request()))
+                ->mapInto(CustomDashboard::class);
         });
     }
 

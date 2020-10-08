@@ -27,4 +27,25 @@ class Standard extends BaseBoard
 //            Text::make(__('my Second Value'), 'my_second_value'),
         ];
     }
+
+    /**
+     * Get the displayable label of the resource.
+     *
+     * @return  string
+     */
+    public static function label()
+    {
+        return __('Standard Dashboard');
+    }
+
+
+    /**
+     * Get the displayable singular label of the resource.
+     *
+     * @return  string
+     */
+    public static function singularLabel()
+    {
+        return __('Standard Dashboard');
+    }
 }

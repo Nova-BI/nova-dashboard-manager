@@ -37,7 +37,7 @@ class users extends BaseMetric
     {
         return [
             NovaDependencyContainer::make([
-                Boolean::make(__('Only with verified email'), 'only_verified_email'),
+                Boolean::make(__('Only with verified email'), 'only_verified_email')->help(__('Limit to users with verified email address')),
             ])->dependsOn('visualable', \NovaBi\NovaDashboardManager\Nova\Datavisualables\Value::class),
         ];
     }

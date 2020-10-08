@@ -4,6 +4,7 @@ namespace NovaBi\NovaDashboardManager\Nova\Datavisualables;
 
 use App\Nova\Resource;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Text;
 
 
@@ -46,6 +47,8 @@ class Value extends BaseVisual
         return __('Value Widget');
     }
 
+
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -55,7 +58,7 @@ class Value extends BaseVisual
     public function visualFields(Request $request)
     {
         return [
-            Text::make(__('my First Value'), 'my_first_value'),
+            Boolean::make(__('Previous Value'), 'ShowPrevious')->help(__('Enable to show Value of previous date range with trend icon'))->default('true'),
         ];
     }
 }

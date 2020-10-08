@@ -27,7 +27,7 @@ class actionEvents extends BaseDatametricable
     {
         return \NovaBi\NovaDashboardManager\Nova\Datametricables\actionEvents::class;
     }
-
+/*
     public function getActionEventsMetricOptionAttribute()
     {
         return $this->extra_attributes->action_events_metric;
@@ -37,6 +37,7 @@ class actionEvents extends BaseDatametricable
     {
         $this->extra_attributes->action_events_metric = $value;
     }
+*/
 
     public function calculate(Collection $options, Filters $filters)
     {

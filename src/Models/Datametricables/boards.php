@@ -28,6 +28,8 @@ class boards extends BaseDatametricable
         return \NovaBi\NovaDashboardManager\Nova\Datametricables\boards::class;
     }
 
+    /**
+     * // example custom attributes
     public function getBoardsMetricOptionAttribute()
     {
         return $this->extra_attributes->boards_metric_option;
@@ -39,6 +41,7 @@ class boards extends BaseDatametricable
         $this->extra_attributes->boards_metric_option = $value;
     }
 
+     */
 
     public function calculate(Collection $options, Filters $filters)
     {

@@ -14,14 +14,14 @@ class Value extends BaseDatavisualable
         return \NovaBi\NovaDashboardManager\Nova\Datavisualables\Value::class;
     }
 
-    public function getMyFirstValueAttribute()
+    public function getShowPreviousAttribute()
     {
-        return $this->extra_attributes->my_first_value;
+        return $this->extra_attributes->show_previous;
     }
 
-    public function setMyFirstValueAttribute($value)
+    public function setShowPreviousAttribute($value)
     {
-        $this->extra_attributes->my_first_value = $value;
+        $this->extra_attributes->show_previous = $value;
     }
 
 }
