@@ -3,7 +3,6 @@
 namespace NovaBi\NovaDashboardManager\Models\Datavisualables\Visuals;
 
 
-
 trait Visuable
 {
 

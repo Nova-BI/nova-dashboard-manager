@@ -77,7 +77,7 @@ class Datawidget extends Resource
      */
     public static function label()
     {
-        return __('Datawidgets');
+        return __('Widgets');
     }
 
 
@@ -88,7 +88,7 @@ class Datawidget extends Resource
      */
     public static function singularLabel()
     {
-        return __('Datawidget');
+        return __('Widget');
     }
 
 

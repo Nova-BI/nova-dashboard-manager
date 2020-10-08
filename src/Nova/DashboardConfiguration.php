@@ -81,7 +81,7 @@ class DashboardConfiguration extends Resource
      */
     public static function singularLabel()
     {
-        return __('Databoard Configuration');
+        return __('Dashboards');
     }
 
     /**
@@ -127,8 +127,8 @@ class DashboardConfiguration extends Resource
                 $fields,
                 [
                     Boolean::make(__('Expand Filter by Default'), 'ExpandFilterByDefault')->hideFromIndex(),
-                    Boolean::make(__('Grid: Compact'), 'GridCompact')->help(__('Automatically move items up if there is space available'))->hideFromIndex(),
-                    Number::make(__('Number of columns'), 'GridNumberOfColumns')->min(1)->max(12)->help(__('Number of Columns you can arrange widgets'))->hideFromIndex(),
+                    Boolean::make(__('Grid: Compact'), 'GridCompact')->default(true)->help(__('Automatically move items up if there is space available'))->hideFromIndex(),
+                    Number::make(__('Number of columns'), 'GridNumberOfColumns')->default('6')->min(1)->max(12)->help(__('Number of Columns you can arrange widgets'))->hideFromIndex(),
 
 
                     PlainText::make(__('Databoard Type'), function () {

@@ -29,7 +29,7 @@ public function tools()
 {
     return [
         new DashboardManager(), // must be loaded first !!!
-        new NovaDataboards(),
+        new NovaDashboard(),
     ];
 }
 ```

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Actions\ActionEvent;
 use Laravel\Nova\Filters\BooleanFilter;
 use Illuminate\Support\Arr;
+use rcknr\Nova\Filters\MultiselectFilter;
 
 class ActionEventType extends BooleanFilter
 {

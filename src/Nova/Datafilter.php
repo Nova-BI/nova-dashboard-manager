@@ -75,7 +75,7 @@ class Datafilter extends Resource
      */
     public static function label()
     {
-        return __('Datafilters');
+        return __('Filters');
     }
 
 
@@ -86,7 +86,7 @@ class Datafilter extends Resource
      */
     public static function singularLabel()
     {
-        return __('Datafilter');
+        return __('Filter');
     }
 
 

@@ -3,18 +3,13 @@
 namespace NovaBi\NovaDashboardManager\Models\Datavisualables\Visuals;
 
 use DigitalCreative\NovaDashboard\Filters;
-use DigitalCreative\ChartJsWidget\Color;
 use DigitalCreative\ChartJsWidget\DataSet;
 use DigitalCreative\ChartJsWidget\Gradient;
 use DigitalCreative\ChartJsWidget\LineChartWidget;
 use DigitalCreative\ChartJsWidget\Style;
 use DigitalCreative\ChartJsWidget\ValueResult;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 use Laravel\Nova\Fields\Select;
-use NovaBi\NovaDashboardManager\Traits\DynamicMetricsTrait;
-use Illuminate\Http\Request;
-use Nemrutco\NovaGlobalFilter\GlobalFilterable;
 
 class LineChart extends LineChartWidget
 {

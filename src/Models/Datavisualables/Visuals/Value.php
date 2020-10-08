@@ -6,10 +6,6 @@ use DigitalCreative\NovaDashboard\Filters;
 use DigitalCreative\ValueWidget\Widgets\ValueResult;
 use DigitalCreative\ValueWidget\Widgets\ValueWidget;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
-use NovaBi\NovaDashboardManager\Traits\DynamicMetricsTrait;
-use Illuminate\Http\Request;
-use Nemrutco\NovaGlobalFilter\GlobalFilterable;
 
 class Value extends ValueWidget
 {
