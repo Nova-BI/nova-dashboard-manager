@@ -57,9 +57,6 @@ class actionEvents extends BaseDatametricable
                         ['dateColumn' => 'created_at', 'previousRange' => true]
                     )
                     ->applyFilter($filters, \NovaBi\NovaDashboardManager\Nova\Filters\ActionEventType::class);;
-
-//                dd($calcuation->debugQuery($calcuationCurrentValue->query()));
-
                 return [
                     'currentValue' => $calcuationCurrentValue->query()->get()->count(),
                     'previousValue' => $calcuationPreviousValue->query()->get()->count()
@@ -74,8 +71,9 @@ class actionEvents extends BaseDatametricable
                 // Using Nova Trend calculations
                 $calcuation = ActionEventTrendCalculation::make();
                 $calcuation->applyFilter($filters, \NovaBi\NovaDashboardManager\Nova\Filters\ActionEventType::class);
+                $calcuation->applyFilter($filters, \NovaBi\NovaDashboardManager\Nova\Filters\DateRangeDefined::class);;
 
-                $dateValue = $filters->getFilterValue(DateRangeDefined::class);
+                $dateValue = $filters->getFilterValue(\NovaBi\NovaDashboardManager\Nova\Filters\DateRangeDefined::class);
 
                 $result = $this->formatTrendData($dateValue, $calcuation);
 

@@ -11,7 +11,7 @@ class UserValueCalculation extends BaseValueCalculation
     /**
      * Create a new base calculation.
      *
-     * @return Illuminate\Database\Eloquent\Builder
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function newQuery()
     {
@@ -41,16 +41,6 @@ class UserValueCalculation extends BaseValueCalculation
     public function verified()
     {
         $this->query = $this->query()->whereNotNull('email_verified_at');
-        return $this;
-    }
-
-    /*
-     * Total number of verified users
-     *
-     */
-    public function testCheck()
-    {
-        $this->query = $this->query()->whereNotNull('created_at');
         return $this;
     }
 }

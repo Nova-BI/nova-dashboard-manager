@@ -43,7 +43,6 @@ class DashboardManager extends NovaDashboard
     }
 
 
-
     protected function resolveDashboards(): Collection
     {
         return once(static function () {
@@ -51,6 +50,12 @@ class DashboardManager extends NovaDashboard
                 ->filter(fn(DashboardModel $dashboard) => $dashboard->authorizedToSee(request()))
                 ->mapInto(CustomDashboard::class);
         });
+    }
+
+
+    public function dashboards(): Collection
+    {
+        return $this->resolveDashboards();
     }
 
     /**

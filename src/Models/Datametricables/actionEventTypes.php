@@ -5,11 +5,8 @@ namespace NovaBi\NovaDashboardManager\Models\Datametricables;
 
 use DigitalCreative\NovaDashboard\Filters;
 use Illuminate\Support\Collection;
-use NovaBi\NovaDashboardManager\Calculations\ActionEventTrendCalculation;
 use NovaBi\NovaDashboardManager\Calculations\ActionEventTypeTrendCalculation;
 use NovaBi\NovaDashboardManager\Calculations\ActionEventTypeValueCalculation;
-use NovaBi\NovaDashboardManager\Nova\Filters\ActionEventType;
-use Illuminate\Http\Request;
 use Laravel\Nova\Actions\ActionEvent;
 use NovaBi\NovaDashboardManager\Nova\Filters\DateRangeDefined;
 

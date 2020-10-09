@@ -10,7 +10,7 @@ class UserTrendCalculation extends BaseTrendCalculation
     /**
      * Create a new base calculation.
      *
-     * @return Illuminate\Database\Eloquent\Builder
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function newQuery()
     {

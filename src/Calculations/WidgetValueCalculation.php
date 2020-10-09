@@ -12,7 +12,7 @@ class WidgetValueCalculation extends BaseValueCalculation
     /**
      * Create a new base calculation.
      *
-     * @return Illuminate\Database\Eloquent\Builder
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function newQuery()
     {

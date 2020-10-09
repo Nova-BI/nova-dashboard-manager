@@ -8,7 +8,7 @@ return [
 
     'tables' => [
         'widget_configurations' => 'widget_configurations',
-        'widgets' => 'widgets',
+        'widgets' => 'widgets', // you need to change the widget table name in nova-dashboard.table_name as well
         'metrics' => 'metrics',
         'visuals' => 'visuals',
         'filters' => 'filters',
@@ -44,8 +44,6 @@ return [
         'default' => 'todo',
 
         'resources' => [
-//            \NovaBi\NovaDashboardManager\Nova\Datafilterables\DateFrom::class,
-//            \NovaBi\NovaDashboardManager\Nova\Datafilterables\DateTo::class,
             \NovaBi\NovaDashboardManager\Nova\Datafilterables\DateRange::class,
             \NovaBi\NovaDashboardManager\Nova\Datafilterables\ActionEventTypes::class,
 
