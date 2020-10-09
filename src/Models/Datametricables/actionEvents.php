@@ -45,21 +45,21 @@ class actionEvents extends BaseDatametricable
         switch ($this->visualable_type) {
             case \NovaBi\NovaDashboardManager\Models\Datavisualables\Value::class :
 
-                $calcuation = ActionEventValueCalculation::make();
+                $calculation = ActionEventValueCalculation::make();
 
-                $calcuationCurrentValue = (clone $calcuation)
+                $calculationCurrentValue = (clone $calculation)
                     ->applyFilter($filters, \NovaBi\NovaDashboardManager\Nova\Filters\DateRangeDefined::class,
                         ['dateColumn' => 'created_at'])
                     ->applyFilter($filters, \NovaBi\NovaDashboardManager\Nova\Filters\ActionEventType::class);
 
-                $calcuationPreviousValue = (clone $calcuation)
+                $calculationPreviousValue = (clone $calculation)
                     ->applyFilter($filters, \NovaBi\NovaDashboardManager\Nova\Filters\DateRangeDefined::class,
                         ['dateColumn' => 'created_at', 'previousRange' => true]
                     )
                     ->applyFilter($filters, \NovaBi\NovaDashboardManager\Nova\Filters\ActionEventType::class);;
                 return [
-                    'currentValue' => $calcuationCurrentValue->query()->get()->count(),
-                    'previousValue' => $calcuationPreviousValue->query()->get()->count()
+                    'currentValue' => $calculationCurrentValue->query()->get()->count(),
+                    'previousValue' => $calculationPreviousValue->query()->get()->count()
                 ];
 
 
@@ -69,13 +69,13 @@ class actionEvents extends BaseDatametricable
             case \NovaBi\NovaDashboardManager\Models\Datavisualables\BarChart::class :
 
                 // Using Nova Trend calculations
-                $calcuation = ActionEventTrendCalculation::make();
-                $calcuation->applyFilter($filters, \NovaBi\NovaDashboardManager\Nova\Filters\ActionEventType::class);
-                $calcuation->applyFilter($filters, \NovaBi\NovaDashboardManager\Nova\Filters\DateRangeDefined::class);;
+                $calculation = ActionEventTrendCalculation::make();
+                $calculation->applyFilter($filters, \NovaBi\NovaDashboardManager\Nova\Filters\ActionEventType::class);
+                $calculation->applyFilter($filters, \NovaBi\NovaDashboardManager\Nova\Filters\DateRangeDefined::class);;
 
                 $dateValue = $filters->getFilterValue(\NovaBi\NovaDashboardManager\Nova\Filters\DateRangeDefined::class);
 
-                $result = $this->formatTrendData($dateValue, $calcuation);
+                $result = $this->formatTrendData($dateValue, $calculation);
 
                 return [
                     'labels' => $result['labels'],

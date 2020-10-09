@@ -2,7 +2,6 @@
 
 The Dashboard-Manager for [Nova-Dashboard](https://novapackages.com/packages/digital-creative/nova-dashboard) allows you to configure dashboards within your Nova-App
 
-
 [![Latest Stable Version](https://poser.pugx.org/nova-bi/nova-dashboard-manager/v)](//packagist.org/packages/nova-bi/nova-dashboard-manager) [![Total Downloads](https://poser.pugx.org/nova-bi/nova-dashboard-manager/downloads)](//packagist.org/packages/nova-bi/nova-dashboard-manager) [![Latest Unstable Version](https://poser.pugx.org/nova-bi/nova-dashboard-manager/v/unstable)](//packagist.org/packages/nova-bi/nova-dashboard-manager) [![License](https://poser.pugx.org/nova-bi/nova-dashboard-manager/license)](//packagist.org/packages/nova-bi/nova-dashboard-manager)
 
 
@@ -133,7 +132,7 @@ Now you can create new Filters and Metrics in your Dashboard configuration and a
 
 using Trait \NovaBi\NovaDashboardManager\Calculations\Calculatable`  you can view the raw SQL using the `debugQuery()` method
 
-    dd($calcuation->debugQuery($calcuationCurrentValue->query()));
+    dd($calculation->debugQuery($calculationCurrentValue->query()));
     
     
 

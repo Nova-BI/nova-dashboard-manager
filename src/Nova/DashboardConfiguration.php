@@ -71,7 +71,7 @@ class DashboardConfiguration extends Resource
      */
     public static function label()
     {
-        return __('Databoard Configuration');
+        return __('Dashboards');
     }
 
     /**

@@ -64,7 +64,7 @@ class BaseDatametricable extends Model
     }
 
 
-    public function formatTrendData($dateValue, Trend $calcuation)
+    public function formatTrendData($dateValue, Trend $calculation)
     {
         $request = resolve(NovaRequest::class);
         $timezone = Nova::resolveUserTimezone($request) ?? $request->timezone;
@@ -78,22 +78,22 @@ class BaseDatametricable extends Model
         switch ($dateValue) {
             case 'TODAY':
                 $request->range = $nowChronos->hour + 1; // hours today
-                $result = $calcuation->countByHours($request, $calcuation->query(), 'created_at');
+                $result = $calculation->countByHours($request, $calculation->query(), 'created_at');
                 $labels = array_keys($result->trend);
                 break;
             case '_365':
                 $request->range = 365;
-                $result = $calcuation->countByDays($request, $calcuation->query(), 'created_at');
+                $result = $calculation->countByDays($request, $calculation->query(), 'created_at');
                 $labels = array_keys($result->trend);
                 break;
             case 'QTD':
                 $request->range = $nowCarbon->firstOfQuarter()->diffInDays()+1;
-                $result = $calcuation->countByDays($request, $calcuation->query(), 'created_at');
+                $result = $calculation->countByDays($request, $calculation->query(), 'created_at');
                 $labels = array_keys($result->trend);
                 break;
             case 'YTD':
                 $request->range = $nowChronos->month;
-                $result = $calcuation->countByMonths($request, $calcuation->query(), 'created_at');
+                $result = $calculation->countByMonths($request, $calculation->query(), 'created_at');
                 $labels = array_keys($result->trend);
                 break;
             case '30':
@@ -103,10 +103,10 @@ class BaseDatametricable extends Model
                 $request->range = $dateValue;
                 if ($dateValue == 'MTD') {
                     $request->range = $nowChronos->day;
-                    $result = $calcuation->countByDays($request, $calcuation->query(), 'created_at');
+                    $result = $calculation->countByDays($request, $calculation->query(), 'created_at');
                 } else {
                     $request->range = $dateValue;
-                    $result = $calcuation->countByDays($request, $calcuation->query(), 'created_at');
+                    $result = $calculation->countByDays($request, $calculation->query(), 'created_at');
                 }
 
 
@@ -126,7 +126,7 @@ class BaseDatametricable extends Model
             case 'ALL':
             default:
                 $request->range = 12;
-                $result = $calcuation->countByMonths($request, $calcuation->query(), 'created_at');
+                $result = $calculation->countByMonths($request, $calculation->query(), 'created_at');
                 $labels = array_keys($result->trend);
                 break;
         }

@@ -50,10 +50,10 @@ class users extends BaseDatametricable
         switch ($this->visualable_type) {
             case \NovaBi\NovaDashboardManager\Models\Datavisualables\Value::class :
 
-                $calcuation = UserValueCalculation::make();
+                $calculation = UserValueCalculation::make();
 
                 if ($this->only_verified_email) {
-                    $calcuation = $calcuation->verified();
+                    $calculation = $calculation->verified();
                 }
 
                 // option 1
@@ -62,25 +62,25 @@ class users extends BaseDatametricable
 
                 // option 2
                 // apply filter with options
-                // $calcuation->applyFilter($filters, DateRangeDefined::class,
+                // $calculation->applyFilter($filters, DateRangeDefined::class,
                 //     ['dateColumn' => 'created_at']
                 // );
 
 
-                $calcuationCurrentValue = (clone $calcuation)->applyFilter($filters, DateRangeDefined::class,
+                $calculationCurrentValue = (clone $calculation)->applyFilter($filters, DateRangeDefined::class,
                     ['dateColumn' => 'created_at']
                 );
 
-                $calcuationPreviousValue = (clone $calcuation)->applyFilter($filters, DateRangeDefined::class,
+                $calculationPreviousValue = (clone $calculation)->applyFilter($filters, DateRangeDefined::class,
                     ['dateColumn' => 'created_at', 'previousRange' => true]
                 );
 
                 // alternativ approach: use Nova Value calculations
-                // $calcuation->count($calcuationCurrentValue->query());
+                // $calculation->count($calculationCurrentValue->query());
 
                 return [
-                    'currentValue' => $calcuationCurrentValue->query()->get()->count(),
-                    'previousValue' => $calcuationPreviousValue->query()->get()->count()
+                    'currentValue' => $calculationCurrentValue->query()->get()->count(),
+                    'previousValue' => $calculationPreviousValue->query()->get()->count()
                 ];
                 break;
 
@@ -88,11 +88,11 @@ class users extends BaseDatametricable
             case \NovaBi\NovaDashboardManager\Models\Datavisualables\BarChart::class :
 
                 // Using Nova Trend calculations
-                $calcuation = UserTrendCalculation::make();
+                $calculation = UserTrendCalculation::make();
 
                 $dateValue = $filters->getFilterValue(DateRangeDefined::class);
 
-                $result = $this->formatTrendData($dateValue, $calcuation);
+                $result = $this->formatTrendData($dateValue, $calculation);
 
 
                 return [
