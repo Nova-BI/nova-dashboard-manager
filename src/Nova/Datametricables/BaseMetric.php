@@ -55,13 +55,14 @@ class BaseMetric extends Resource
     public function fields(Request $request)
     {
         return array_merge(
-            $this->metricFields($request),
             [
                 InlineMorphTo::make(__('Visualisation'), 'visualable')
                     ->types($this->loadVisualables())
                     ->default(\NovaBi\NovaDashboardManager\Models\Datavisualables\Value::class)
                     ->onlyOnForms()->required()
-            ]);
+            ],
+            $this->metricFields($request),
+        );
     }
 
 
