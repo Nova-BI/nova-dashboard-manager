@@ -123,6 +123,7 @@ class DashboardConfiguration extends Resource
                             'Internal Description'
                         ),
                     Boolean::make(__('Edit-Mode'), 'DashboardEditable')->default('true')->help('Enable to edit dashboard'),
+                    Boolean::make(__('Allow to make screenshot of dashboard'), 'showSaveScreenshotButton')->default('true'),
                 ],
                 $fields,
                 [
