@@ -54,6 +54,15 @@ class Dashboard extends Model implements Sortable
         $this->setTable(config('nova-dashboard-manager.tables.dashboards'));
     }
 
+    public function getShowSaveScreenshotButtonAttribute()
+    {
+        return $this->extra_attributes->showSaveScreenshotButton;
+    }
+
+    public function setShowSaveScreenshotButtonAttribute($value)
+    {
+        $this->extra_attributes->showSaveScreenshotButton = $value;
+    }
 
     public function getDashboardEditableAttribute()
     {
