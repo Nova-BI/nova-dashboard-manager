@@ -95,7 +95,7 @@ class CustomDashboard extends Dashboard
     {
         return [
             'expandFilterByDefault' => $this->model->ExpandFilterByDefault,
-            'displayScreenshotButton' => true,
+            'displayScreenshotButton' => $this->model->showSaveScreenshotButton,
             'grid' => [
 //                'breakpoint' => 'sm',
                 'compact' => $this->model->GridCompact,
