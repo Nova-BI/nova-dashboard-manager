@@ -67,7 +67,7 @@ class Datawidget extends Resource
      * @var  array
      */
     public static $search = [
-        'id'
+        'name'
     ];
 
     /**
