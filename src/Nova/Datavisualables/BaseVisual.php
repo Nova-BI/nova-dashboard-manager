@@ -39,11 +39,21 @@ class BaseVisual extends Resource
      *
      * @var  array
      */
-    public static $search = [
-        'slug', 'name'
-    ];
+    public static $search = [];
 
-
+    /**
+     * Indicates if the resource should be globally searchable.
+     *
+     * @var bool
+     */
+    public static $globallySearchable = false;    
+    
+    /**
+     * Indicates if the resource should be searchable on the index view.
+     *
+     * @var bool
+     */
+    public static $searchable = false;    
 
     /**
      * Get the fields displayed by the resource.
