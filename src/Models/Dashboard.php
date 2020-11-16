@@ -320,4 +320,40 @@ class Dashboard extends Model implements Sortable
             'meta' => $this->meta(),
         ];
     }
+    
+    public static function boot()
+    {
+        parent::boot();
+
+        // adding attached widgets to dashboard view
+        static::saved(function ($dashboard) {
+            $modelClass = config('nova-dashboard.widget_model');
+
+            foreach($dashboard->datawidgets as $datawidget){
+                $dashboardValue = "custom-dashboard-{$dashboard->id}";
+                $key = "visual-{$datawidget->id}";
+
+                $checkWidgetConfiguration = resolve($modelClass)
+                    ->where('dashboard', $dashboardValue)
+                    ->where('key', $key)
+                    ->count();
+
+                if(!$checkWidgetConfiguration){
+                    $widgetInstance = resolve($modelClass);
+                    $widgetInstance->setAttribute('user_id', auth()->user()->id);
+                    $widgetInstance->setAttribute('dashboard', $dashboardValue);
+                    $widgetInstance->setAttribute('view', "view-{$dashboard->id}-default");
+                    $widgetInstance->setAttribute('key', $key);
+                    $widgetInstance->setAttribute('options', [
+                        'widget_title' => $datawidget->name
+                    ]);
+                    $widgetInstance->setAttribute('coordinates', [
+                        'width' => $datawidget->visualable->cardMinWidtha ?? 3,
+                        'height' => $datawidget->visualable->cardMinHeighta ?? 2
+                    ]);
+                    $widgetInstance->save();
+                }
+            }
+        });
+    }
 }
