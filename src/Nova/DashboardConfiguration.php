@@ -150,7 +150,55 @@ class DashboardConfiguration extends Resource
                     AttachMany::make(__('Widgets'), 'datawidgets', Datawidget::class)
                         ->rules('min:1')
                         ->showCounts()
-                        ->help('Select a Widgets to attach')->onlyOnForms(),
+                        ->help('Select a Widgets to attach')
+                        ->onlyOnForms()
+                        ->fillUsing(function ($request, $dashboard, $requestAttribute) {
+                            $configurationClass = config('nova-dashboard.widget_model');
+                            $dashboardValue = "custom-dashboard-{$dashboard->id}";
+
+                            $widgetsKeys = [];
+                            foreach(json_decode($request->post($requestAttribute)) as $widgetId){
+                                $widgetsKeys[ $widgetId ] = "visual-{$widgetId}";
+                            }
+
+                            // delete attached widgets which are not in request
+                            resolve($configurationClass)
+                                ->where('dashboard', $dashboardValue)
+                                ->whereNotIn('key', $widgetsKeys)
+                                ->delete();
+
+                            // adding widgets
+                            $dashboard->$requestAttribute()->sync(
+                                json_decode($request->$requestAttribute, true)
+                            );
+
+                            // adding widget configurations
+                            foreach($widgetsKeys as $widgetId => $widgetKey){
+                                // check if configuration is new
+                                $checkWidgetConfiguration = resolve($configurationClass)
+                                    ->where('dashboard', $dashboardValue)
+                                    ->where('key', $widgetKey)
+                                    ->count();
+
+                                if(!$checkWidgetConfiguration){
+                                    $datawidget = \NovaBi\NovaDashboardManager\Models\Datawidget::find($widgetId);
+
+                                    $widgetInstance = resolve($configurationClass);
+                                    $widgetInstance->setAttribute('user_id', auth()->user()->id);
+                                    $widgetInstance->setAttribute('dashboard', $dashboardValue);
+                                    $widgetInstance->setAttribute('view', "view-{$dashboard->id}-default");
+                                    $widgetInstance->setAttribute('key', $widgetKey);
+                                    $widgetInstance->setAttribute('options', [
+                                        'widget_title' => $datawidget->name
+                                    ]);
+                                    $widgetInstance->setAttribute('coordinates', [
+                                        'width' => $datawidget->visualable->cardMinWidth ?? 3,
+                                        'height' => $datawidget->visualable->cardMinHeight ?? 2
+                                    ]);
+                                    $widgetInstance->save();
+                                }
+                            }
+                        }),
 
                     Number::make(__('Data Widgets'), function () {
                         return $this->datawidgets->count();
