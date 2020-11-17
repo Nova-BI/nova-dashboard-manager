@@ -4,6 +4,7 @@ namespace NovaBi\NovaDashboardManager\Nova;
 
 use App\Nova\Situation;
 use Laravel\Nova\Fields\Boolean;
+use Illuminate\Support\Facades\DB;
 use NovaBi\NovaDashboardManager\Nova\Dashboardables\BaseFilter;
 
 use Laravel\Nova\Resource;
@@ -162,7 +163,15 @@ class DashboardConfiguration extends Resource
                             }
 
                             // delete attached widgets which are not in request
+                            /*
+                             * BUG: code below does not delete entries
                             resolve($configurationClass)
+                                ->where('dashboard', $dashboardValue)
+                                ->whereNotIn('key', $widgetsKeys)
+                                ->delete();
+                            * SO we do that by using DB facade
+                            */
+                            DB::table(resolve($configurationClass)->getTable())
                                 ->where('dashboard', $dashboardValue)
                                 ->whereNotIn('key', $widgetsKeys)
                                 ->delete();
