@@ -222,6 +222,7 @@ class DashboardConfiguration extends Resource
                         return $this->datafilters->count();
                     })->onlyOnIndex(),
 
+                    /*
                     (new Tabs('Relations', [
                         'Data Widgets' => [
                             BelongsToMany::make('datawidgets')
@@ -234,6 +235,7 @@ class DashboardConfiguration extends Resource
 
                         ]
                     ]))->defaultSearch(true),
+                    */
 
                 ]
             );
