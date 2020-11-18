@@ -312,7 +312,18 @@ class DashboardConfiguration extends Resource
      */
     public static function redirectAfterCreate(NovaRequest $request, $resource)
     {
-        //Example: return 'redirectAfter?to=https://myapp.test/@username
+        return '/redirectAfter?to=' . url( Nova::path() . '/resources/' . static::uriKey());
+    }
+    
+        /**
+     * Return the location to redirect the user after deletion.
+     *
+     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
+     * @param \Laravel\Nova\Resource $resource
+     * @return string
+     */
+    public static function redirectAfterDelete(NovaRequest $request)
+    {
         return '/redirectAfter?to=' . url( Nova::path() . '/resources/' . static::uriKey());
     }
 }
