@@ -7,8 +7,11 @@ use Laravel\Nova\Fields\Boolean;
 use Illuminate\Support\Facades\DB;
 use NovaBi\NovaDashboardManager\Nova\Dashboardables\BaseFilter;
 
+use Laravel\Nova\Nova;
 use Laravel\Nova\Resource;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Http\Requests\NovaRequest;
+
 
 use NovaBi\NovaDashboardManager\Traits\LoadMorphablesTrait;
 
@@ -298,5 +301,18 @@ class DashboardConfiguration extends Resource
     public static function availableForNavigation(Request $request)
     {
         return (config('nova-dashboard-manager.showToolMenu') === false);
+    }
+    
+        /**
+     * Return the location to redirect the user after creation.
+     *
+     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
+     * @param \Laravel\Nova\Resource $resource
+     * @return string
+     */
+    public static function redirectAfterCreate(NovaRequest $request, $resource)
+    {
+        //Example: return 'redirectAfter?to=https://myapp.test/@username
+        return '/redirectAfter?to=' . url( Nova::path() . '/resources/' . static::uriKey());
     }
 }
