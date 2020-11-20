@@ -205,6 +205,8 @@ class DashboardConfiguration extends Resource
                                             'widget_title' => $datawidget->name
                                         ]);
                                         $widgetInstance->setAttribute('coordinates', [
+                                            'x' => 0,
+                                            'y' => 0,
                                             'width' => $datawidget->visualable->cardMinWidth ?? 3,
                                             'height' => $datawidget->visualable->cardMinHeight ?? 2
                                         ]);
