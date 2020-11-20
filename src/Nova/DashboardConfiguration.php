@@ -191,6 +191,8 @@ class DashboardConfiguration extends Resource
                                 );
 
                                 // adding widget configurations
+                                $x = 0;
+                                $y = 0;
                                 foreach($widgetsKeys as $widgetId => $widgetKey){
                                     // check if configuration is new
                                     $checkWidgetConfiguration = resolve($configurationClass)
@@ -209,13 +211,25 @@ class DashboardConfiguration extends Resource
                                         $widgetInstance->setAttribute('options', [
                                             'widget_title' => $datawidget->name
                                         ]);
+                                        
+                                        // calculating x y to fit dash items
+                                        $width = $datawidget->visualable->cardMinWidth ?? 3;
+                                        $height = $datawidget->visualable->cardMinHeight ?? 2;
+
                                         $widgetInstance->setAttribute('coordinates', [
-                                            'x' => 0,
-                                            'y' => 0,
-                                            'width' => $datawidget->visualable->cardMinWidth ?? 3,
-                                            'height' => $datawidget->visualable->cardMinHeight ?? 2
+                                            'x' => $x,
+                                            'y' => $y,
+                                            'width' => $width,
+                                            'height' => $height
                                         ]);
                                         $widgetInstance->save();
+                                        
+                                        // calculating x/y for next widget
+                                        $x = $x + $width;
+                                        if($x >= $request->get('GridNumberOfColumns', 12)){
+                                            $x = 0;
+                                            $y = $y + $height;
+                                        }
                                     }
                                 }
                             });
