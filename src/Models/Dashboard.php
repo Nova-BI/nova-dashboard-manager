@@ -63,6 +63,16 @@ class Dashboard extends Model implements Sortable
     {
         $this->extra_attributes->showSaveScreenshotButton = $value;
     }
+    
+    public function getEnableAddWidgetButtonAttribute()
+    {
+        return $this->extra_attributes->enableAddWidgetButton;
+    }
+
+    public function setEnableAddWidgetButtonAttribute($value)
+    {
+        $this->extra_attributes->enableAddWidgetButton = $value;
+    }
 
     public function getDashboardEditableAttribute()
     {
