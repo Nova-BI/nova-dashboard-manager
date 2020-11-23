@@ -213,8 +213,9 @@ class DashboardConfiguration extends Resource
                                         ]);
                                         
                                         // calculating x y to fit dash items
-                                        $width = $datawidget->visualable->cardMinWidth ?? 3;
-                                        $height = $datawidget->visualable->cardMinHeight ?? 2;
+                                        $width = $datawidget->visualable->cardDefaultWidth ?? $datawidget->visualable->cardMinWidth ?? 3;
+                                        $height = $datawidget->visualable->cardDefaultHeight ?? $datawidget->visualable->cardMinHeight ?? 2;
+
 
                                         $widgetInstance->setAttribute('coordinates', [
                                             'x' => $x,
