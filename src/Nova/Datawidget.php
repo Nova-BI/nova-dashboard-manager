@@ -123,7 +123,7 @@ class Datawidget extends Resource
         return
             array_merge(
                 [
-                    Text::make(__('Name'), 'name'),
+                    Text::make(__('Name'), 'name')->creationRules('required'),
                     Textarea::make(__('Description'), 'description')
                         ->alwaysShow()
                         ->rows(3)
