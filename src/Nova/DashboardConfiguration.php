@@ -126,7 +126,12 @@ class DashboardConfiguration extends Resource
                         ->help(
                             'Internal Description'
                         ),
-                    Boolean::make(__('Edit-Mode'), 'DashboardEditable')->default('true')->help('Enable to edit dashboard'),
+                    Boolean::make(__('Edit-Mode'), 'DashboardEditable')
+                    ->default('true')
+                    ->help('Enable to edit dashboard (resize and move dash items)'),
+                    Boolean::make(__('Enable "Add Widget" button'), 'enableAddWidgetButton')
+                        ->default(false)
+                        ->hideFromIndex(),
                     Boolean::make(__('Allow to make screenshot of dashboard'), 'showSaveScreenshotButton')
                     ->default('true')
                     ->hideFromIndex(),
