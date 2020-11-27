@@ -37,6 +37,7 @@ class DashboardManagerServiceProvider extends ServiceProvider
         $this->app->booted(function () use ($config) {
             $config->set('nova-dashboard.table_name', config('nova-dashboard-manager.tables.widget_configurations'));
             $config->set('nova-dashboard.widget_model', config('nova-dashboard-manager.models.widget_configuration'));
+            $config->set('nova-dashboard.user_model', config('nova-dashboard-manager.models.user', \App\Models\User::class));
             $this->routes();
         });
 
