@@ -16,6 +16,7 @@ return [
     ],
 
     'models' => [
+        'user' => \App\Models\User::class,
         'widget_configuration' => \DigitalCreative\NovaDashboard\Models\Widget::class,
         'widget' => \NovaBi\NovaDashboardManager\Models\Datawidget::class,
         'filter' => \NovaBi\NovaDashboardManager\Models\Datafilter::class,
