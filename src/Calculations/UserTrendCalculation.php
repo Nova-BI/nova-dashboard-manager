@@ -2,8 +2,6 @@
 
 namespace NovaBi\NovaDashboardManager\Calculations;
 
-use App\User;
-
 class UserTrendCalculation extends BaseTrendCalculation
 {
 
@@ -14,7 +12,7 @@ class UserTrendCalculation extends BaseTrendCalculation
      */
     public function newQuery()
     {
-        return (new User())->newQuery();
+        return resolve(config('nova-dashboard.user_model'))->newQuery();
     }
 
 }
