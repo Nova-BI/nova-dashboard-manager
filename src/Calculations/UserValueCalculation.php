@@ -1,9 +1,6 @@
 <?php
 
-
 namespace NovaBi\NovaDashboardManager\Calculations;
-
-use App\User;
 
 class UserValueCalculation extends BaseValueCalculation
 {
@@ -15,7 +12,7 @@ class UserValueCalculation extends BaseValueCalculation
      */
     public function newQuery()
     {
-        return (new User())->newQuery();
+        return resolve(config('nova-dashboard.user_model'))->newQuery();
     }
 
     /*
