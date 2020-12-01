@@ -108,7 +108,17 @@ class CustomView extends View
                     [
                         'title' => $datawidget->name,
                         'metric' => $datawidget->metricable,
-                        'uriKey' => 'visual-'. $datawidget->id
+                        'uriKey' => 'visual-'. $datawidget->id,
+                        'options' => [
+                            'draggable' => true,
+                            'resizable' => true,
+                            'locked' => false,
+
+                            'minWidth' => $datawidget->metricable->visualable->cardMinWidth,
+                            'maxWidth' => $datawidget->metricable->visualable->cardMaxWidth,
+                            'minHeight' => $datawidget->metricable->visualable->cardMinHeight,
+                            'maxHeight' => $datawidget->metricable->visualable->cardMaxHeight
+                        ]
                     ]
                 );
             ;
