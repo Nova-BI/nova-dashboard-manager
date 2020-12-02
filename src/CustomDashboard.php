@@ -98,12 +98,34 @@ class CustomDashboard extends Dashboard
             'enableAddWidgetButton' => $this->model->enableAddWidgetButton,
             'displayScreenshotButton' => $this->model->showSaveScreenshotButton,
             'grid' => [
-//                'breakpoint' => 'sm',
-                'compact' => $this->model->GridCompact,
-                'numberOfCols' => (int)$this->model->GridNumberOfColumns,
-//                'numberOfCols' => 3,
-//                'colWidth' => 300,
-//                'rowHeight' => 300
+                [
+                    'breakpoint' => 'sm',
+                    'breakpointWidth' => 0,
+                    'compact' => $this->model->GridCompact,
+                    'numberOfCols' => 1,
+                    'minRowHeight' => 100,
+                    'maxRowHeight' => 100
+                ],
+
+                [
+                    'breakpoint' => 'xl',
+                    'breakpointWidth' => 600,
+                    'compact' => $this->model->GridCompact,
+                    'numberOfCols' => 12,//(int)$this->model->GridNumberOfColumns,
+                    'maxColWidth' => 80,
+                    'minColWidth' => 80,
+                    'minRowHeight' => 100,
+                    'maxRowHeight' => 100
+                ],
+                /*
+                [
+                    'breakpoint' => 'sm',
+                    'breakpointWidth' => 50,
+                    'compact' => $this->model->GridCompact,
+                    'numberOfCols' => 1,
+                    'debug' => true
+                ]
+                */
             ]
         ];
     }
