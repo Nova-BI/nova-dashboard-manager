@@ -225,6 +225,11 @@ class DashboardConfiguration extends Resource
                                         $width = $datawidget->visualable->cardDefaultWidth ?? $datawidget->visualable->cardMinWidth ?? 3;
                                         $height = $datawidget->visualable->cardDefaultHeight ?? $datawidget->visualable->cardMinHeight ?? 2;
 
+                                        // checking if current item fits in row
+                                        if($x + $width > $request->get('GridNumberOfColumns', 12)){
+                                            $x = 0;
+                                            $y = $y + $height;
+                                        }
 
                                         $widgetInstance->setAttribute('coordinates', [
                                             'x' => $x,
