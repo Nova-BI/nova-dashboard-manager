@@ -214,7 +214,8 @@ class DashboardConfiguration extends Resource
                                         $widgetInstance->setAttribute('view', "view-{$dashboard->id}-default");
                                         $widgetInstance->setAttribute('key', $widgetKey);
                                         $widgetInstance->setAttribute('options', [
-                                            'widget_title' => $datawidget->name
+                                            'widget_title' => $datawidget->name,
+                                            'widget_help' => resolve($datawidget->metricable_type)->visualisationTypes[ class_basename($datawidget->visualable->visual) ]
                                         ]);
                                         
                                         // calculating x y to fit dash items
