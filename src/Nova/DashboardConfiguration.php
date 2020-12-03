@@ -207,6 +207,9 @@ class DashboardConfiguration extends Resource
 
                                     if(!$checkWidgetConfiguration){
                                         $datawidget = \NovaBi\NovaDashboardManager\Models\Datawidget::find($widgetId);
+                                        
+                                        $visualisationType = resolve($datawidget->metricable_type)->visualisationTypes[ class_basename($datawidget->visualable->visual) ];
+                                        $helpText = $datawidget->description . (isset($visualisationType['help']) ? PHP_EOL . $visualisationType['help'] : '');
 
                                         $widgetInstance = resolve($configurationClass);
                                         $widgetInstance->setAttribute('user_id', auth()->user()->id);
@@ -215,7 +218,7 @@ class DashboardConfiguration extends Resource
                                         $widgetInstance->setAttribute('key', $widgetKey);
                                         $widgetInstance->setAttribute('options', [
                                             'widget_title' => $datawidget->name,
-                                            'widget_help' => resolve($datawidget->metricable_type)->visualisationTypes[ class_basename($datawidget->visualable->visual) ]
+                                            'widget_help' => nl2br(__($helpText) )
                                         ]);
                                         
                                         // calculating x y to fit dash items
