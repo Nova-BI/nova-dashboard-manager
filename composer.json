@@ -14,7 +14,7 @@
     "require": {
         "php": ">=7.4.0",
         "digital-creative/nova-dashboard": "dev-master",
-        "digital-creative/nova-inline-morph-to": "^0.2",
+        "digital-creative/nova-inline-morph-to": "dev-master",
         "digital-creative/nova-data-table": "^0.1.1",
         "digital-creative/nova-pill-filter":"dev-master",
         "digital-creative/nova-range-input-filter": "dev-master",
@@ -48,5 +48,11 @@
     },
     "config": {
         "sort-packages": true
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:marispro/nova-inline-morph-to.git"
+        } 
+    ]
 }
