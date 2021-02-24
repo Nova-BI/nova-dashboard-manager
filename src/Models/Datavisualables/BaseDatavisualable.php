@@ -3,12 +3,11 @@
 
 namespace NovaBi\NovaDashboardManager\Models\Datavisualables;
 
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use NovaBi\NovaDashboardManager\Models\Datametricables\BaseDatametricable;
 use NovaBi\NovaDashboardManager\Traits\HasSchemalessAttributesTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-
-
 
 class BaseDatavisualable extends Model
 {
@@ -17,17 +16,18 @@ class BaseDatavisualable extends Model
     public $timestamps = true;
 
     // mapping to visual
-    var $visual = \NovaBi\NovaDashboardManager\Models\Datavisualables\Visuals\Value::class;
+    public string $visual = \NovaBi\NovaDashboardManager\Models\Datavisualables\Visuals\Value::class;
 
     public $casts = [
         'extra_attributes' => 'array',
     ];
 
     // all available card Widths
-    var $cardWidthAll = ['1/3' => '1/3 width', '2/3' => '2/3 width', 'full' => 'full Width'];
+    public $cardWidthAll = [1,2,3,4];
+    public $cardHeightAll = [1,2,3];
 
     // supported card Widths
-    var $cardWidthSupported = ['1/3', '2/3', 'full'];
+    public $cardWidthSupported = [1,2,3,4];
 
 
     public function __construct(array $attributes = [])
@@ -36,7 +36,7 @@ class BaseDatavisualable extends Model
         $this->setTable(Str::singular(config('nova-dashboard-manager.tables.visuals')) . '_standard');
     }
 
-    public function metrics()
+    public function metrics(): MorphMany
     {
         return $this->morphMany(BaseDatametricable::class, 'visualables');
     }
