@@ -3,6 +3,7 @@
 namespace NovaBi\NovaDashboardManager\Nova\Datavisualables;
 
 use App\Nova\Resource;
+use Davidpiesse\NovaToggle\Toggle;
 use NovaBi\NovaDashboardManager\Traits\LoadMorphablesTrait;
 use DigitalCreative\InlineMorphTo\HasInlineMorphToFields;
 use Illuminate\Http\Request;
@@ -69,6 +70,10 @@ class BaseVisual extends Resource
         return array_merge(
             $this->visualFields($request),
             [
+                 Toggle::make(__('Show Title'), 'showTitle')
+                    ->showLabels()
+                    ->trueLabel(' ')
+                    ->falseLabel(' ')->default(true)
                 // add default settings
                 /*
                 Select::make(__('Width'), 'card_width')->options($cardWidthOptions)->displayUsingLabels()
