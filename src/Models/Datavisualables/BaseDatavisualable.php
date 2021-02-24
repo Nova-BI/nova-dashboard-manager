@@ -98,4 +98,14 @@ class BaseDatavisualable extends Model
     {
         $this->extra_attributes->my_second_value = $value;
     }
+    
+    public function getResultTypeAttribute()
+    {
+        return $this->extra_attributes->result_type;
+    }
+
+    public function setResultTypeAttribute($value)
+    {
+        $this->extra_attributes->result_type = $value;
+    }
 }
