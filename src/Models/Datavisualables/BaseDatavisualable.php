@@ -22,6 +22,7 @@ class BaseDatavisualable extends Model
         'extra_attributes' => 'array',
     ];
 
+
     // all available card Widths
     public $cardWidthAll = [1,2,3,4];
     public $cardHeightAll = [1,2,3];
@@ -98,7 +99,7 @@ class BaseDatavisualable extends Model
     {
         $this->extra_attributes->my_second_value = $value;
     }
-    
+
     public function getResultTypeAttribute()
     {
         return $this->extra_attributes->result_type;
@@ -107,5 +108,15 @@ class BaseDatavisualable extends Model
     public function setResultTypeAttribute($value)
     {
         $this->extra_attributes->result_type = $value;
+    }
+
+    public function getShowTitleAttribute()
+    {
+        return $this->extra_attributes->get('showTitle', $this::$extra_attributes_default['showTitle'] ?? true);
+    }
+
+    public function setShowTitleAttribute($value)
+    {
+        $this->extra_attributes->showTitle = $value;
     }
 }
