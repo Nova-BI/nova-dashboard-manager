@@ -218,7 +218,7 @@ class DashboardConfiguration extends Resource
                                         $widgetInstance->setAttribute('key', $widgetKey);
                                         $widgetInstance->setAttribute('options', [
                                             'widget_title' => $datawidget->name,
-                                            'widget_help' => nl2br($helpText)
+                                            'widget_help' => nl2br(trim($helpText))
                                         ]);
                                         
                                         // calculating x y to fit dash items
