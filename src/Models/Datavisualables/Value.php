@@ -5,7 +5,7 @@ namespace NovaBi\NovaDashboardManager\Models\Datavisualables;
 class Value extends BaseDatavisualable
 {
     // mapping to visual
-    var $visual = \NovaBi\NovaDashboardManager\Models\Datavisualables\Visuals\Value::class;
+    public string $visual = \NovaBi\NovaDashboardManager\Models\Datavisualables\Visuals\Value::class;
 
     // supported card Widths
     var $cardWidthSupported = ['1/3'];
