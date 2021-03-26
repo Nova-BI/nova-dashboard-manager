@@ -72,7 +72,6 @@ class BaseMetric extends Resource
                 InlineMorphTo::make(__('Visualisation'), 'visualable')
                     ->types($this->loadVisualables())
                     ->default(\NovaBi\NovaDashboardManager\Models\Datavisualables\Value::class)
-                    ->typeUpdateable(true)
                     ->onlyOnForms()
                     ->required()
             ],
