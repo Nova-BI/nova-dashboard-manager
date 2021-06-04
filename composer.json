@@ -15,7 +15,7 @@
         "php": ">=7.4.0",
         "davidpiesse/nova-toggle": "^0.0.8",
         "digital-creative/nova-dashboard": "dev-master",
-        "digital-creative/nova-inline-morph-to": "*",
+        "marispro/nova-inline-morph-to": "*",
         "digital-creative/nova-data-table": "^0.1.1",
         "digital-creative/nova-pill-filter":"dev-master",
         "digital-creative/nova-range-input-filter": "dev-master",
