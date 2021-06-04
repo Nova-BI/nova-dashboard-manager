@@ -53,7 +53,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/marispro/nova-inline-morph-to"
+            "url": "git@github.com:marispro/nova-inline-morph-to.git"
         } 
     ]
 }
