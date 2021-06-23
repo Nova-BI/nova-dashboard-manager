@@ -55,6 +55,15 @@ class BaseDatametricable extends Model
     {
         return $this->morphTo();
     }
+    
+    public function dashboard(){
+        $matches = [];
+        $dashboardId = preg_match('#(\d+)$#', request()->get('dashboard'), $matches);
+        if(!empty($matches[0])){
+            return Dashboard::where('id', $matches[0])->first();
+        }
+        return false;
+    }
 
 
     public function calculate(Collection $options, Filters $filters)
