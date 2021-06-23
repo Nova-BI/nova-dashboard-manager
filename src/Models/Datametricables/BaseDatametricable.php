@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Metrics\Trend;
 use Laravel\Nova\Nova;
+use NovaBi\NovaDashboardManager\Models\Dashboard;
 use NovaBi\NovaDashboardManager\Models\Datavisualables\Value;
 use NovaBi\NovaDashboardManager\Models\Datawidget;
 use NovaBi\NovaDashboardManager\Nova\Filters\DateRangeDefined;
