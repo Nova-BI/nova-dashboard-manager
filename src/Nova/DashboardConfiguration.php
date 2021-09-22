@@ -110,7 +110,7 @@ class DashboardConfiguration extends Resource
         $fields = [
             InlineMorphTo::make(__('Board Type'), 'dashboardable')
                 ->types($dashboardables)->required()->hideFromIndex()
-                ->default(\NovaBi\NovaDashboardManager\Nova\Dashboardables\Standard::class),
+                ->default(config('nova-dashboard-manager.dashboardables.default')),
         ];
 
         return
