@@ -25,8 +25,7 @@ return [
 
 
     'dashboardables' => [
-        // Todo: make configurable
-        'default' => 'todo',
+        'default' => \NovaBi\NovaDashboardManager\Nova\Dashboardables\Standard::class, // example dashboardable
 
         'resources' => [
             \NovaBi\NovaDashboardManager\Nova\Dashboardables\Standard::class, // example dashboardable
