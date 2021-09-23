@@ -86,7 +86,11 @@ class CustomView extends View
         $filters = [];
 
         $this->databoard->datafilters->each(function ($datafilter, $key) use (&$filters) {
-            $filters[] = (new $datafilter->filterable->filter)->withMeta(['default' => $datafilter->filterable->DefaultValue]);
+            $filter = (new $datafilter->filterable->filter)->withMeta(['default' => $datafilter->filterable->DefaultValue]);
+            if (method_exists($filter, 'setId')) {
+                $filter->setId($datafilter->id);
+            }
+            $filters[] = $filter;
         });
         return $filters;
     }
