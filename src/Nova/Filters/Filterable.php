@@ -6,6 +6,17 @@ use Illuminate\Support\Carbon;
 
 trait Filterable
 {
+    
+     var $id;
+
+    public function setId($id) {
+        $this->id = $id;
+        return $this;
+    }
+
+    public function getFilterableItem() {
+        return self::$model::find($this->id);
+    }
 
     public function default()
     {
