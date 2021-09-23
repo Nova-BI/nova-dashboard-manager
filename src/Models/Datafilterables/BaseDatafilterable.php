@@ -4,6 +4,7 @@
 namespace NovaBi\NovaDashboardManager\Models\Datafilterables;
 
 use Illuminate\Support\Str;
+use NovaBi\NovaDashboardManager\Models\Datafilter;
 use NovaBi\NovaDashboardManager\Traits\HasSchemalessAttributesTrait;
 use Illuminate\Database\Eloquent\Model;
 
@@ -36,5 +37,14 @@ class BaseDatafilterable extends Model
     public function setDefaultValueAttribute($value)
     {
         $this->extra_attributes->default_value = $value;
+    }
+    
+    
+
+    // 'filter' is already used by var $filter;
+    
+    // get the parent filter to retrieve e.g. name 
+    public function filterParent() {
+        return $this->morphOne(Datafilter::class, 'filterable');
     }
 }
