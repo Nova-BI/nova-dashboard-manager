@@ -7,7 +7,7 @@ use Illuminate\Support\Carbon;
 trait Filterable
 {
     
-     var $id;
+    var $id;
 
     public function setId($id) {
         $this->id = $id;
@@ -18,6 +18,36 @@ trait Filterable
         return self::$model::find($this->id);
     }
 
+    
+    // to support multiple filters of same class
+    // override the key function (returns class) to make the filterKey unique
+    /*
+     * in NovaFilter make the name independent from filter class
+     *
+        public function name()
+        {
+            $item = $this->getFilterableItem();
+            return $item->filterParent->name; // support not unique filter names: . ' - '. $this->id;
+        }
+     *
+     */
+
+    // usage in datametricables like this:
+    /*
+     *
+     *  // iterate through all Filters of type <myFilterableClass>
+        $this->dashboard()->datafilters()->whereFilterableType('<myFilterableClass>')->each(function ($filter) {
+            // use $value to filter your data
+           $value = $this->filters->getFilterValue(<myNovaFilterClass>, $filter->name);
+        });
+     *
+     */
+
+    function key()
+    {
+        return parent::key() . '-' . $this->id;
+    }
+    
     public function default()
     {
         return $this->meta['default'];
