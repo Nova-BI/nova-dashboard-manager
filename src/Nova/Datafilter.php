@@ -115,7 +115,7 @@ class Datafilter extends Resource
         return
             array_merge(
                 [
-                    Text::make(__('Name'), 'name')->required(),
+                    Text::make(__('Name'), 'name')->required()->rules('required'),
                     Textarea::make(__('Description'), 'description')
                         ->alwaysShow()
                         ->rows(3)

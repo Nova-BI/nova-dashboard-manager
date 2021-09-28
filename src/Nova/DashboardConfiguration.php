@@ -116,7 +116,7 @@ class DashboardConfiguration extends Resource
         return
             array_merge(
                 [
-                    Text::make(__('Name'), 'name'),
+                    Text::make(__('Name'), 'name')->rules('required'),
                     Textarea::make(__('Description'), 'description')
                         ->alwaysShow()
                         ->rows(3)
