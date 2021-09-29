@@ -207,9 +207,13 @@ class DashboardConfiguration extends Resource
 
                                     if(!$checkWidgetConfiguration){
                                         $datawidget = \NovaBi\NovaDashboardManager\Models\Datawidget::find($widgetId);
-                                        
-                                        $visualisationType = resolve($datawidget->metricable_type)->visualisationTypes[ class_basename($datawidget->visualable->visual) ];
-                                        $helpText = $datawidget->description . (isset($visualisationType['help']) ? PHP_EOL . __($visualisationType['help']) : '');
+
+                                        $metricable = resolve($datawidget->metricable_type);
+                                        $helpText = '';
+                                        if(isset($metricable->visualisationTypes[ class_basename($datawidget->visualable->visual) ])){
+                                            $visualisationType = $metricable->visualisationTypes[ class_basename($datawidget->visualable->visual) ];
+                                            $helpText = $datawidget->description . (isset($visualisationType['help']) ? PHP_EOL . __($visualisationType['help']) : '');
+                                        }
 
                                         $widgetInstance = resolve($configurationClass);
                                         $widgetInstance->setAttribute('user_id', auth()->user()->id);
