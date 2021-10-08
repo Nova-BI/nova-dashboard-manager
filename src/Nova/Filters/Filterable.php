@@ -6,19 +6,19 @@ use Illuminate\Support\Carbon;
 
 trait Filterable
 {
-    
-    var $id;
+
+    var $filterableId;
 
     public function setId($id) {
-        $this->id = $id;
+        $this->filterableId = $id;
         return $this;
     }
 
     public function getFilterableItem() {
-        return self::$model::find($this->id);
+        return self::$model::find($this->filterableId);
     }
 
-    
+
     // to support multiple filters of same class
     // override the key function (returns class) to make the filterKey unique
     /*
@@ -27,7 +27,7 @@ trait Filterable
         public function name()
         {
             $item = $this->getFilterableItem();
-            return $item->filterParent->name; // support not unique filter names: . ' - '. $this->id;
+            return $item->filterParent->name; // support not unique filter names: . ' - '. $this->filterableId;
         }
      *
      */
@@ -45,9 +45,9 @@ trait Filterable
 
     function key()
     {
-        return parent::key() . '-' . $this->id;
+        return parent::key() . '-' . $this->filterableId;
     }
-    
+
     public function default()
     {
         return $this->meta['default'];
