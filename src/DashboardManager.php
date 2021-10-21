@@ -46,7 +46,7 @@ class DashboardManager extends NovaDashboard
     protected function resolveDashboards(): Collection
     {
         return once(static function () {
-            return DashboardModel::all()
+            return DashboardModel::orderBy('sort_order')->get()
                 ->filter(fn(DashboardModel $dashboard) => $dashboard->authorizedToSee(request()))
                 ->mapInto(CustomDashboard::class);
         });
