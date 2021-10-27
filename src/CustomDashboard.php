@@ -88,6 +88,16 @@ class CustomDashboard extends Dashboard
         ];
     }
 
+    /**
+     * return dasbhoard model
+     * 
+     * @return DashboardModel
+     */
+    
+    public function model() {
+        return $this->model;
+    }    
+    
     // todo
     // make configurable
     // https://vue-responsive-dash.netlify.app/api/#props
