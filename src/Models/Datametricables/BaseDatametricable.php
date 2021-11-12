@@ -26,7 +26,7 @@ class BaseDatametricable extends Model
     public $timestamps = true;
 
     // supported visuals
-    var $visualisationTypes = [];
+    public array $visualisationTypes = [];
 
     public $casts = [
         'extra_attributes' => 'array',
