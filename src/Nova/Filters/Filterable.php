@@ -42,6 +42,21 @@ trait Filterable
         });
      *
      */
+    
+    /**
+     * Get the dashboard context of this filter
+     *
+     * @param Request $request
+     * @return array
+     */
+    public function getDashboard(Request $request)
+    {
+        // get id of dashboard from request url
+        $fragments = explode('custom-dashboard-', $request->path());
+        $id = $fragments[1];
+        return Dashboard::find($id);
+    }
+    
 
     function key()
     {
