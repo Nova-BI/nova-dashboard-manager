@@ -3,6 +3,8 @@
 namespace NovaBi\NovaDashboardManager\Nova\Filters;
 
 use Illuminate\Support\Carbon;
+use Illuminate\Http\Request;
+use NovaBi\NovaDashboardManager\Models\Dashboard;
 
 trait Filterable
 {
