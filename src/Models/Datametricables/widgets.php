@@ -17,7 +17,7 @@ class widgets extends BaseDatametricable
      * methode 'calculate' must return a valid calculation
      */
 
-    var $visualisationTypes = [
+    public array $visualisationTypes = [
         'Value' => 'Number of Widgets',
         'LineChart' => 'Linechart-Trend of Widgets',
         'BarChart' => 'Barchart-Trend of Widgets'
@@ -33,15 +33,19 @@ class widgets extends BaseDatametricable
     {
 
         switch ($this->visualable_type) {
-            case \NovaBi\NovaDashboardManager\Models\Datavisualables\Value::class :
+            case \NovaBi\NovaDashboardManager\Models\Datavisualables\Value::class:
 
                 $calculation = WidgetValueCalculation::make();
 
-                $calculationCurrentValue = (clone $calculation)->applyFilter($filters, DateRangeDefined::class,
+                $calculationCurrentValue = (clone $calculation)->applyFilter(
+                    $filters,
+                    DateRangeDefined::class,
                     ['dateColumn' => 'created_at']
                 );
 
-                $calculationPreviousValue = (clone $calculation)->applyFilter($filters, DateRangeDefined::class,
+                $calculationPreviousValue = (clone $calculation)->applyFilter(
+                    $filters,
+                    DateRangeDefined::class,
                     ['dateColumn' => 'created_at', 'previousRange' => true]
                 );
 
@@ -53,8 +57,8 @@ class widgets extends BaseDatametricable
 
                 break;
 
-            case \NovaBi\NovaDashboardManager\Models\Datavisualables\LineChart::class :
-            case \NovaBi\NovaDashboardManager\Models\Datavisualables\BarChart::class :
+            case \NovaBi\NovaDashboardManager\Models\Datavisualables\LineChart::class:
+            case \NovaBi\NovaDashboardManager\Models\Datavisualables\BarChart::class:
 
                 // Using Nova Trend calculations
                 $calculation = WidgetTrendCalculation::make();
@@ -75,8 +79,6 @@ class widgets extends BaseDatametricable
                 ];
 
                 break;
-
         }
     }
-
 }

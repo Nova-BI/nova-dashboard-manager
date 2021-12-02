@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 return [
@@ -83,7 +84,7 @@ return [
         /*
          * by using names you can later re-configure the visualisation for e.g. "Value" when there are new visualisation types available
          * in you metricable the types can be limit with short-names:
-         *      var $visualisationTypes = ['Value', 'LineChart'];
+         *      public array $visualisationTypes = ['Value', 'LineChart'];
          */
         'resources' => [
             'Value' => \NovaBi\NovaDashboardManager\Nova\Datavisualables\Value::class,

@@ -22,7 +22,7 @@ class users extends BaseDatametricable
      * methode 'calculate' must return a valid calculation
      */
 
-    var $visualisationTypes = [
+    public array $visualisationTypes = [
         'Value' => 'Number of Users',
         'LineChart' => 'Linechart-Trend of Users',
         'BarChart' => 'Barchart-Trend of Users'
@@ -48,7 +48,7 @@ class users extends BaseDatametricable
     public function calculate(Collection $options, Filters $filters)
     {
         switch ($this->visualable_type) {
-            case \NovaBi\NovaDashboardManager\Models\Datavisualables\Value::class :
+            case \NovaBi\NovaDashboardManager\Models\Datavisualables\Value::class:
 
                 $calculation = UserValueCalculation::make();
 
@@ -67,11 +67,15 @@ class users extends BaseDatametricable
                 // );
 
 
-                $calculationCurrentValue = (clone $calculation)->applyFilter($filters, DateRangeDefined::class,
+                $calculationCurrentValue = (clone $calculation)->applyFilter(
+                    $filters,
+                    DateRangeDefined::class,
                     ['dateColumn' => 'created_at']
                 );
 
-                $calculationPreviousValue = (clone $calculation)->applyFilter($filters, DateRangeDefined::class,
+                $calculationPreviousValue = (clone $calculation)->applyFilter(
+                    $filters,
+                    DateRangeDefined::class,
                     ['dateColumn' => 'created_at', 'previousRange' => true]
                 );
 
@@ -84,8 +88,8 @@ class users extends BaseDatametricable
                 ];
                 break;
 
-            case \NovaBi\NovaDashboardManager\Models\Datavisualables\LineChart::class :
-            case \NovaBi\NovaDashboardManager\Models\Datavisualables\BarChart::class :
+            case \NovaBi\NovaDashboardManager\Models\Datavisualables\LineChart::class:
+            case \NovaBi\NovaDashboardManager\Models\Datavisualables\BarChart::class:
 
                 // Using Nova Trend calculations
                 $calculation = UserTrendCalculation::make();
@@ -109,5 +113,4 @@ class users extends BaseDatametricable
                 break;
         }
     }
-
 }

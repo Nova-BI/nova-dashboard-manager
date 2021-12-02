@@ -17,7 +17,7 @@ class actionEvents extends BaseDatametricable
      * methode 'calculate' must return a valid calculation
      */
 
-    var $visualisationTypes = [
+    public array $visualisationTypes = [
         'Value' => 'Number of Action Events',
         'LineChart' => 'Linechart-Trend of Action Events',
         'BarChart' => 'Barchart-Trend of Action Events'
@@ -27,7 +27,7 @@ class actionEvents extends BaseDatametricable
     {
         return \NovaBi\NovaDashboardManager\Nova\Datametricables\actionEvents::class;
     }
-/*
+    /*
     public function getActionEventsMetricOptionAttribute()
     {
         return $this->extra_attributes->action_events_metric;
@@ -43,17 +43,22 @@ class actionEvents extends BaseDatametricable
     {
 
         switch ($this->visualable_type) {
-            case \NovaBi\NovaDashboardManager\Models\Datavisualables\Value::class :
+            case \NovaBi\NovaDashboardManager\Models\Datavisualables\Value::class:
 
                 $calculation = ActionEventValueCalculation::make();
 
                 $calculationCurrentValue = (clone $calculation)
-                    ->applyFilter($filters, \NovaBi\NovaDashboardManager\Nova\Filters\DateRangeDefined::class,
-                        ['dateColumn' => 'created_at'])
+                    ->applyFilter(
+                        $filters,
+                        \NovaBi\NovaDashboardManager\Nova\Filters\DateRangeDefined::class,
+                        ['dateColumn' => 'created_at']
+                    )
                     ->applyFilter($filters, \NovaBi\NovaDashboardManager\Nova\Filters\ActionEventType::class);
 
                 $calculationPreviousValue = (clone $calculation)
-                    ->applyFilter($filters, \NovaBi\NovaDashboardManager\Nova\Filters\DateRangeDefined::class,
+                    ->applyFilter(
+                        $filters,
+                        \NovaBi\NovaDashboardManager\Nova\Filters\DateRangeDefined::class,
                         ['dateColumn' => 'created_at', 'previousRange' => true]
                     )
                     ->applyFilter($filters, \NovaBi\NovaDashboardManager\Nova\Filters\ActionEventType::class);;
@@ -65,8 +70,8 @@ class actionEvents extends BaseDatametricable
 
                 break;
 
-            case \NovaBi\NovaDashboardManager\Models\Datavisualables\LineChart::class :
-            case \NovaBi\NovaDashboardManager\Models\Datavisualables\BarChart::class :
+            case \NovaBi\NovaDashboardManager\Models\Datavisualables\LineChart::class:
+            case \NovaBi\NovaDashboardManager\Models\Datavisualables\BarChart::class:
 
                 // Using Nova Trend calculations
                 $calculation = ActionEventTrendCalculation::make();
@@ -88,7 +93,6 @@ class actionEvents extends BaseDatametricable
                     ]
                 ];
                 break;
-
         }
     }
 }
