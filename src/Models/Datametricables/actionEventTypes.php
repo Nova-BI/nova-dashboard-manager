@@ -17,7 +17,7 @@ class actionEventTypes extends BaseDatametricable
      * methode 'calculate' must return a valid calculation
      */
 
-    var $visualisationTypes = [
+    public array $visualisationTypes = [
         'Value' => 'Number of Action Event Types',
         'LineChart' => 'Linechart-Trend of Action Event Types',
         'BarChart' => 'Barchart-Trend of Action Event Types'
@@ -42,19 +42,23 @@ class actionEventTypes extends BaseDatametricable
     {
 
         switch ($this->visualable_type) {
-            case \NovaBi\NovaDashboardManager\Models\Datavisualables\Value::class :
+            case \NovaBi\NovaDashboardManager\Models\Datavisualables\Value::class:
 
                 $calculation = ActionEventTypeValueCalculation::make();
 
                 $calculationCurrentValue = (clone $calculation)
-                    ->applyFilter($filters, DateRangeDefined::class,
+                    ->applyFilter(
+                        $filters,
+                        DateRangeDefined::class,
                         ['dateColumn' => 'created_at']
                     )
                     ->applyFilter($filters, \NovaBi\NovaDashboardManager\Nova\Filters\ActionEventType::class);
 
 
                 $calculationPreviousValue = (clone $calculation)
-                    ->applyFilter($filters, DateRangeDefined::class,
+                    ->applyFilter(
+                        $filters,
+                        DateRangeDefined::class,
                         ['dateColumn' => 'created_at', 'previousRange' => true]
                     )
                     ->applyFilter($filters, \NovaBi\NovaDashboardManager\Nova\Filters\ActionEventType::class);
@@ -67,8 +71,8 @@ class actionEventTypes extends BaseDatametricable
 
                 break;
 
-            case \NovaBi\NovaDashboardManager\Models\Datavisualables\LineChart::class :
-            case \NovaBi\NovaDashboardManager\Models\Datavisualables\BarChart::class :
+            case \NovaBi\NovaDashboardManager\Models\Datavisualables\LineChart::class:
+            case \NovaBi\NovaDashboardManager\Models\Datavisualables\BarChart::class:
 
                 // Using Nova Trend calculations
                 $calculation = ActionEventTypeTrendCalculation::make();
@@ -98,7 +102,6 @@ class actionEventTypes extends BaseDatametricable
                     if (!$labels) {
                         $labels = $data['labels'];
                     }
-
                 }
 
                 return [
@@ -107,7 +110,6 @@ class actionEventTypes extends BaseDatametricable
                 ];
 
                 break;
-
         }
     }
 }

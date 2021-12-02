@@ -17,7 +17,7 @@ class boards extends BaseDatametricable
      * methode 'calculate' must return a valid calculation
      */
 
-    var $visualisationTypes = [
+    public array $visualisationTypes = [
         'Value' => 'Number of Boards',
         'LineChart' => 'Linechart-Trend of Boards',
         'BarChart' => 'Barchart-Trend of Boards'
@@ -47,15 +47,19 @@ class boards extends BaseDatametricable
     {
 
         switch ($this->visualable_type) {
-            case \NovaBi\NovaDashboardManager\Models\Datavisualables\Value::class :
+            case \NovaBi\NovaDashboardManager\Models\Datavisualables\Value::class:
 
                 $calculation = BoardValueCalculation::make();
 
-                $calculationCurrentValue = (clone $calculation)->applyFilter($filters, DateRangeDefined::class,
+                $calculationCurrentValue = (clone $calculation)->applyFilter(
+                    $filters,
+                    DateRangeDefined::class,
                     ['dateColumn' => 'created_at']
                 );
 
-                $calculationPreviousValue = (clone $calculation)->applyFilter($filters, DateRangeDefined::class,
+                $calculationPreviousValue = (clone $calculation)->applyFilter(
+                    $filters,
+                    DateRangeDefined::class,
                     ['dateColumn' => 'created_at', 'previousRange' => true]
                 );
 
@@ -67,8 +71,8 @@ class boards extends BaseDatametricable
 
                 break;
 
-            case \NovaBi\NovaDashboardManager\Models\Datavisualables\LineChart::class :
-            case \NovaBi\NovaDashboardManager\Models\Datavisualables\BarChart::class :
+            case \NovaBi\NovaDashboardManager\Models\Datavisualables\LineChart::class:
+            case \NovaBi\NovaDashboardManager\Models\Datavisualables\BarChart::class:
 
                 // Using Nova Trend calculations
                 $calculation = BoardTrendCalculation::make();
@@ -77,7 +81,7 @@ class boards extends BaseDatametricable
 
                 $result = $this->formatTrendData($dateValue, $calculation);
 
-    
+
                 return [
                     'labels' => $result['labels'],
                     'datasets' => [
@@ -89,8 +93,6 @@ class boards extends BaseDatametricable
                     ]
                 ];
                 break;
-
         }
     }
-
 }
