@@ -85,7 +85,7 @@ class DashboardConfiguration extends Resource
      */
     public static function singularLabel()
     {
-        return __('Dashboards');
+        return __('Dashboard');
     }
 
     /**
