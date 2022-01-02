@@ -3,7 +3,7 @@
 namespace NovaBi\NovaDashboardManager\Nova;
 
 use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Resource;
+use App\Nova\Resource;
 
 use NovaBi\NovaDashboardManager\Nova\Datametricables\myMetric;
 use NovaBi\NovaDashboardManager\Nova\Datavisualables\Value;
