@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use NovaBi\NovaDashboardManager\Nova\Dashboardables\BaseFilter;
 
 use Laravel\Nova\Nova;
-use Laravel\Nova\Resource;
+use App\Nova\Resource;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
