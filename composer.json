@@ -54,6 +54,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/marispro/nova-inline-morph-to.git"
-        } 
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/marispro/nova-multiselect-filter.git"
+        }
     ]
 }
