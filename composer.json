@@ -28,7 +28,7 @@
         "eminiarts/nova-tabs": "^1.0",
         "epartment/nova-dependency-container": "^1.2.10",
         "ericlagarda/nova-text-card": "^1.2",
-        "klepak/nova-multiselect-filter": "^1.2",
+        "klepak/nova-multiselect-filter": "dev-master",
         "laramaker/redirect-after-asset": "^1.0",
         "optimistdigital/nova-sortable": "^2.0",
         "pdmfc/nova-info-card": "^1.0",
