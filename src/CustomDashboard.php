@@ -122,7 +122,7 @@ class CustomDashboard extends Dashboard
                     'breakpointWidth' => 600,
                     'compact' => $this->model->GridCompact,
                     'numberOfCols' => 12,//(int)$this->model->GridNumberOfColumns,
-                    'maxColWidth' => 80,
+                    'maxColWidth' => 100,
                     'minColWidth' => 80,
                     'minRowHeight' => 120,
                     'maxRowHeight' => 120
