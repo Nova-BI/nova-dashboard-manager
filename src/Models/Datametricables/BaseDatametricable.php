@@ -58,8 +58,14 @@ class BaseDatametricable extends Model
     }
     
     public function dashboard(){
+        // find dashboard key segment
+        $dashboardStr = request()->get('dashboard');
+        foreach(request()->segments() as $segment){
+            if(Str::of($segment)->contains('custom-dashboard')) $dashboardStr = $segment;
+        }
+        
         $matches = [];
-        $dashboardId = preg_match('#(\d+)$#', request()->get('dashboard'), $matches);
+        $dashboardId = preg_match('#(\d+)$#', $dashboardStr, $matches);
         if(!empty($matches[0])){
             return Dashboard::where('id', $matches[0])->first();
         }
