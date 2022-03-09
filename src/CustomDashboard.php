@@ -23,7 +23,6 @@ class CustomDashboard extends Dashboard
 
     public function title(): string
     {
-        return "Dashboard";
         return $this->model->name;
     }
 
