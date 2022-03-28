@@ -32,7 +32,6 @@ class CustomDashboard extends Dashboard
         return 'test';
     }
 
-
     /**
      * Get the ID for the resource.
      *
@@ -89,14 +88,14 @@ class CustomDashboard extends Dashboard
 
     /**
      * return dasbhoard model
-     * 
+     *
      * @return DashboardModel
      */
-    
+
     public function model() {
         return $this->model;
-    }    
-    
+    }
+
     // todo
     // make configurable
     // https://vue-responsive-dash.netlify.app/api/#props
@@ -111,32 +110,41 @@ class CustomDashboard extends Dashboard
                     'breakpoint' => 'sm',
                     'breakpointWidth' => 0,
                     'compact' => $this->model->GridCompact,
-                    'numberOfCols' => 1,
+                    'numberOfCols' => 12,
                     'minRowHeight' => 120,
                     'maxRowHeight' => 120
                 ],
-
+                [
+                    'breakpoint' => 'md',
+                    'breakpointWidth' => 768,
+                    'compact' => $this->model->GridCompact,
+                    'numberOfCols' => 12,
+                    'maxColWidth' => 64,
+                    'minColWidth' => 64,
+                    'minRowHeight' => 120,
+                    'maxRowHeight' => 120
+                ],
+                [
+                    'breakpoint' => 'lg',
+                    'breakpointWidth' => 1024,
+                    'compact' => $this->model->GridCompact,
+                    'numberOfCols' => 12,
+                    'maxColWidth' => 85,
+                    'minColWidth' => 85,
+                    'minRowHeight' => 120,
+                    'maxRowHeight' => 120
+                ],
                 [
                     'breakpoint' => 'xl',
-                    'breakpointWidth' => 600,
+                    'breakpointWidth' => 1280,
                     'compact' => $this->model->GridCompact,
-                    'numberOfCols' => 12,//(int)$this->model->GridNumberOfColumns,
+                    'numberOfCols' => 12,
                     'maxColWidth' => 500,
-                    'minColWidth' => 80,
+                    'minColWidth' => 106,
                     'minRowHeight' => 120,
                     'maxRowHeight' => 120
                 ],
-                /*
-                [
-                    'breakpoint' => 'sm',
-                    'breakpointWidth' => 50,
-                    'compact' => $this->model->GridCompact,
-                    'numberOfCols' => 1,
-                    'debug' => true
-                ]
-                */
             ]
         ];
     }
-
 }
