@@ -105,6 +105,7 @@ class CustomDashboard extends Dashboard
             'expandFilterByDefault' => $this->model->ExpandFilterByDefault,
             'enableAddWidgetButton' => $this->model->enableAddWidgetButton,
             'displayScreenshotButton' => $this->model->showSaveScreenshotButton,
+            'filterColumns' => 3, // 2,3,4,5
             'grid' => [
                 [
                     'breakpoint' => 'sm',
