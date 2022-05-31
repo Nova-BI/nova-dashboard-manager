@@ -17,7 +17,7 @@
         "digital-creative/nova-dashboard": "dev-master",
         "marispro/nova-inline-morph-to": "*",
         "digital-creative/nova-data-table": "^0.1.1",
-        "digital-creative/nova-pill-filter":"dev-master",
+        "digital-creative/nova-pill-filter":"*",
         "digital-creative/nova-range-input-filter": "dev-master",
         "digital-creative/value-widget": "dev-master",
         "digitalazgroup/nova-plain-text-field": "^0.0.4",
