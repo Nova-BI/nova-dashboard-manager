@@ -27,7 +27,6 @@
         "eminiarts/nova-relationship-selector": "^1.0",
         "eminiarts/nova-tabs": "dev-master",
         "epartment/nova-dependency-container": "^1.2.10",
-        "klepak/nova-multiselect-filter": "dev-master",
         "laramaker/redirect-after-asset": "^1.0",
         "outl1ne/nova-sortable": "^3.0",
         "rcknr/nova-multiselect-filter": "^1.3",
