@@ -25,7 +25,7 @@
         "dillingham/nova-attach-many": "^1.0",
         "dillingham/nova-detail-link": "^1.0",
         "eminiarts/nova-relationship-selector": "^1.0",
-        "eminiarts/nova-tabs": "dev-master",
+        "eminiarts/nova-tabs": "^1.0",
         "epartment/nova-dependency-container": "^1.2.10",
         "outl1ne/nova-sortable": "^3.0",
         "rcknr/nova-multiselect-filter": "^1.3",
